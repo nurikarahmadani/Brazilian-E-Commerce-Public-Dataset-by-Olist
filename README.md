@@ -153,8 +153,62 @@ WITH(
 	ROWTERMINATOR = '\n',
 	CODEPAGE = '1252'
 )
+--TABEL ORDERS
+CREATE TABLE orders(
+	order_id VARCHAR(100),
+	customer_id VARCHAR(100),
+	order_status VARCHAR(100),
+	order_purchase_timestamp VARCHAR(100),
+	order_approved_at VARCHAR(100),
+	order_delivered_carrier_date DATETIME,
+	order_delivered_customer_date DATETIME,
+	order_estimated_delivery_date DATETIME
+)
+BULK INSERT orders
+FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\orders.csv'
+WITH(
+	FORMAT = 'CSV',
+	FIRSTROW = 2,
+	FIELDTERMINATOR = ',',
+	ROWTERMINATOR = '\n',
+	CODEPAGE = '1252'
+)
+```
+## Data Cleaning and Normalization
+```sql
+-- Mengecek null values
+SELECT * FROM customers
+WHERE
+	customer_id IS NULL
+	OR customer_unique_id IS NULL
+	OR customer_zip_code_prefix IS NULL
+	OR customer_city IS NULL
+	OR customer_state IS NULL
+-- no null data
 
+SELECT 
+    customer_id, 
+    COUNT(*) AS Jumlah
+FROM customers
+GROUP BY customer_id
+HAVING COUNT(*) > 1;
+--no duplicate value
 
+--duplicate value
+WITH CTE_Duplikat AS (
+    SELECT *, 
+	ROW_NUMBER() OVER (PARTITION BY customer_unique_id ORDER BY customer_id) AS Row_Num
+    FROM customers
+)
+DELETE FROM CTE_Duplikat
+WHERE Row_Num > 1;
 
-
+--TABEL GEOLOCATIONS
+SELECT * FROM geolocations
+WHERE
+	geolocation_zip_code IS NULL
+	OR latitude IS NULL
+	OR latitude IS NULL
+	OR city IS NULL
+	OR state IS NULL
 ```
