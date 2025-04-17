@@ -211,4 +211,16 @@ WHERE
 	OR latitude IS NULL
 	OR city IS NULL
 	OR state IS NULL
+
+-- Menambahkan kolom baru ke tabel products
+ALTER TABLE products
+ADD product_category_name_english NVARCHAR(255);
+
+-- Memperbarui data di kolom baru menggunakan data dari tabel products_category
+UPDATE p
+SET p.product_category_name_english = pc.product_category_name_english
+FROM products AS p
+JOIN products_category AS pc
+ON p.product_category_name = pc.product_category_name;
+
 ```
