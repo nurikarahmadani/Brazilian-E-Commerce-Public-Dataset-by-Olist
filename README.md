@@ -223,4 +223,38 @@ FROM products AS p
 JOIN products_category AS pc
 ON p.product_category_name = pc.product_category_name;
 
+
+ALTER TABLE orders
+ADD order_years VARCHAR(20)
+UPDATE orders
+SET order_years = YEAR(order_purchase_timestamp)
+
+UPDATE geolocations SET state = 'Acre' WHERE state = 'AC';
+UPDATE geolocations SET state = 'Alagoas' WHERE state = 'AL';
+UPDATE geolocations SET state = 'Amapá' WHERE state = 'AP';
+UPDATE geolocations SET state = 'Amazonas' WHERE state = 'AM';
+UPDATE geolocations SET state = 'Bahia' WHERE state = 'BA';
+UPDATE geolocations SET state = 'Ceará' WHERE state = 'CE';
+UPDATE geolocations SET state = 'Distrito Federal' WHERE state = 'DF';
+UPDATE geolocations SET state = 'Espírito Santo' WHERE state = 'ES';
+UPDATE geolocations SET state = 'Goiás' WHERE state = 'GO';
+UPDATE geolocations SET state = 'Maranhão' WHERE state = 'MA';
+UPDATE geolocations SET state = 'Mato Grosso' WHERE state = 'MT';
+UPDATE geolocations SET state = 'Mato Grosso do Sul' WHERE state = 'MS';
+UPDATE geolocations SET state = 'Minas Gerais' WHERE state = 'MG';
+UPDATE geolocations SET state = 'Pará' WHERE state = 'PA';
+UPDATE geolocations SET state = 'Paraíba' WHERE state = 'PB';
+UPDATE geolocations SET state = 'Paraná' WHERE state = 'PR';
+UPDATE geolocations SET state = 'Pernambuco' WHERE state = 'PE';
+UPDATE geolocations SET state = 'Piauí' WHERE state = 'PI';
+UPDATE geolocations SET state = 'Rio de Janeiro' WHERE state = 'RJ';
+UPDATE geolocations SET state = 'Rio Grande do Norte' WHERE state = 'RN';
+UPDATE geolocations SET state = 'Rio Grande do Sul' WHERE state = 'RS';
+UPDATE geolocations SET state = 'Rondônia' WHERE state = 'RO';
+UPDATE geolocations SET state = 'Roraima' WHERE state = 'RR';
+UPDATE geolocations SET state = 'Santa Catarina' WHERE state = 'SC';
+UPDATE geolocations SET state = 'São Paulo' WHERE state = 'SP';
+UPDATE geolocations SET state = 'Sergipe' WHERE state = 'SE';
+UPDATE geolocations SET state = 'Tocantins' WHERE state = 'TO';
+
 ```
