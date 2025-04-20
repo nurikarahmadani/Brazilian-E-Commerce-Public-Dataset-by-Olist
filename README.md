@@ -257,4 +257,74 @@ UPDATE geolocations SET state = 'São Paulo' WHERE state = 'SP';
 UPDATE geolocations SET state = 'Sergipe' WHERE state = 'SE';
 UPDATE geolocations SET state = 'Tocantins' WHERE state = 'TO';
 
+ALTER TABLE orders
+ALTER COLUMN order_id VARCHAR(100) NOT NULL;
+ALTER TABLE orders
+ADD CONSTRAINT order_id PRIMARY KEY (order_id);
+
+--menambahkan foreign key di order_items. tapi ternyata terdapat data di order_items yang tidak ada di tabel parent orders(mismatch value)
+--mengecek apakah ada mismacth value denga query ini
+SELECT DISTINCT product_id
+FROM order_items
+WHERE product_id NOT IN (
+    SELECT product_id
+    FROM products
+);
+DELETE FROM order_items
+WHERE product_id NOT IN (
+    SELECT product_id
+    FROM products
+);
+ALTER TABLE order_items
+ADD CONSTRAINT fk_product_id FOREIGN KEY(product_id)
+REFERENCES products(product_id)
+
+SELECT DISTINCT order_id
+FROM order_payments
+WHERE order_id NOT IN (
+    SELECT order_id
+    FROM orders
+);
+DELETE FROM order_payments
+WHERE order_id NOT IN (
+    SELECT order_id
+    FROM orders
+);
+ALTER TABLE order_payments
+ADD CONSTRAINT fk_order_payments FOREIGN KEY(order_id)
+REFERENCES orders(order_id)
+
+--menambahkan primary key namun terdapat duplikat value
+SELECT review_id, COUNT(*)
+FROM order_reviews
+GROUP BY review_id
+HAVING COUNT(*) > 1;
+
+DELETE FROM order_reviews
+WHERE review_id IN (
+    SELECT review_id
+    FROM order_reviews
+    GROUP BY review_id
+    HAVING COUNT(*) > 1
+);
+ALTER TABLE order_reviews
+ADD CONSTRAINT review_id PRIMARY KEY(review_id)
+
+--menambahkan foreign key
+SELECT DISTINCT order_id
+FROM order_reviews
+WHERE order_id NOT IN (
+    SELECT order_id
+    FROM orders
+);
+DELETE FROM order_reviews
+WHERE order_id NOT IN (
+    SELECT order_id
+    FROM orders
+);
+ALTER TABLE order_reviews
+ADD CONSTRAINT fk_order_reviews FOREIGN KEY(order_id)
+REFERENCES orders(order_id)
+
+--relasi customers dengan orders
 ```
