@@ -327,4 +327,57 @@ ADD CONSTRAINT fk_order_reviews FOREIGN KEY(order_id)
 REFERENCES orders(order_id)
 
 --relasi customers dengan orders
+
+--MENAMBAHKAN KOLOM PRICE PADA TABEL PRODUCT
+UPDATE p
+SET p.price = oi.price
+FROM products p
+JOIN order_items oi ON p.product_id = oi.product_id
+WHERE p.price IS NULL;
+```
+
+## Find Outliers
+```sql
+-- order_items table
+SELECT *
+FROM order_items
+WHERE 
+    ABS(price - 120.701189) > 3 * 184;  -- 3 standar deviasi dari rata-rata
+```
+
+## ANALYSIS
+### TABEL ORDERS
+```SQL
+select * from orders
+
+select distinct order_status from orders
+
+select * from orders
+where order_status = 'canceled'
+
+--MENCARI ORDERS YANG TERLAMBAT DIKIRIM
+SELECT order_id, order_delivered_customer_date, order_estimated_delivery_date,
+       DATEDIFF(DAY, order_delivered_customer_date, order_estimated_delivery_date) AS selisih
+FROM orders
+WHERE DATEDIFF(DAY, order_delivered_customer_date, order_estimated_delivery_date) < 0;
+```
+### Banyak order untuk tiap seller
+```sql
+SELECT 
+    oi.seller_id,
+    COUNT(o.order_id) AS order_counts
+FROM order_items oi
+INNER JOIN orders o ON oi.order_id = o.order_id
+GROUP BY oi.seller_id;
+```
+### menampilkan data jumlah customer berdasarkan state
+```SQL
+--menampilkan data jumlah customer berdasarkan state
+
+SELECT 
+	COUNT(*) as customer_counts,
+	customer_state
+FROM customers
+GROUP BY customer_state
+ORDER BY customer_counts DESC
 ```
