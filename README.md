@@ -381,3 +381,56 @@ FROM customers
 GROUP BY customer_state
 ORDER BY customer_counts DESC
 ```
+
+### menampilkan customer dengan jumlah orderan terbanyak
+```sql
+
+SELECT 
+	COUNT(order_id) as order_count,
+	customer_id
+FROM orders
+GROUP BY customer_id
+ORDER BY order_count DESC
+
+--turns out masing masing customer hanya order 1 kali dalam dataset ini
+```
+### ingn menambahkan total transaksi ke dalam tabel orders
+```sql
+--ingn menambahkan total transaksi ke dalam tabel orders
+--dimana nominal price terdapat pada tabel order items
+ 
+ALTER TABLE orders
+ADD total_transaction DECIMAL
+
+--menggunakan subquery dengan nama "agg"
+UPDATE o
+SET o.total_transaction = agg.total_price
+FROM orders o
+JOIN (
+    SELECT order_id, SUM(price) AS total_price
+    FROM order_items
+    GROUP BY order_id
+) agg ON o.order_id = agg.order_id;
+```
+### customer dengan total transaksi terbanyak
+```SQL
+--customer dengan total transaksi terbanyak
+
+SELECT TOP 5 *
+FROM orders
+ORDER BY total_transaction DESC
+```
+### mencari jumlah produk yang diorder berdasarkan kategori barang
+```SQL
+--mencari jumlah produk yang diorder berdasarkan kategori barang
+--berarti butuh tabel order_items dan products
+
+SELECT 
+	COUNT(o.product_id) as product_count,
+	p.product_category_name_english as category
+FROM order_items o
+JOIN products p ON p.product_id = o.product_id
+GROUP BY p.product_category_name_english 
+ORDER BY product_count DESC
+```
+
