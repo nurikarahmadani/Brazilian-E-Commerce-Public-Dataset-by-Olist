@@ -469,5 +469,34 @@ SELECT
 	YEAR(order_purchase_timestamp) AS years
 FROM orders
 GROUP BY YEAR(order_purchase_timestamp)
+
+--Menampilkan banyak orderan berdasarkan payment method
+SELECT 
+	COUNT(*) as order_count,
+	payment_type
+FROM order_payments
+GROUP BY payment_type
 ```
+### Analisis Review 
+```sql
+
+--Menampilkan banyak review per review score
+SELECT 
+	COUNT(*) total_review,
+	review_score
+FROM order_reviews
+GROUP BY review_score
+ORDER BY review_score
+
+--Menampilkan rata rata review score per product kategori
+SELECT 
+	AVG(orv.review_score) as average_review_score,
+	p.product_category_name_english as product_category
+FROM order_reviews orv
+JOIN order_items  ort ON orv.order_id = ort.order_id
+JOIN products p ON ort.product_id = p.product_id
+GROUP BY p.product_category_name_english
+ORDER BY average_review_score DESC
+```
+
 
