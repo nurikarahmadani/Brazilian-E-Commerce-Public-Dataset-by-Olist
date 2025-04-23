@@ -1,4 +1,11 @@
-# Brazilian-E-Commerce-Public-Dataset-by-Olist
+# E-Commerce Report and Analysis in Brazil: Sales Trends, Product Categories, and Consumer Behavior
+## 📌 Project Overview
+Brazilian E-Commerce Analysis, leveraging SQL for data processing and Power BI for visualization. This project examines transaction trends, payment behaviors, and product category performance based on 99,441 orders from 3,095 sellers across 71 product categories in Brazil.
+
+## 📊 Data
+**Source**          : [https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)<br>
+**Period**          : January 2017 - Juli 2018<br>
+**Cleaned Dataset** : [Dataset](https://github.com/nurikarahmadani/Mobile-Data-SQL-Project/blob/main/Cleaned_Dataset.csv)
 
 ## Database Preparation
 ```sql
