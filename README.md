@@ -334,6 +334,11 @@ SET p.price = oi.price
 FROM products p
 JOIN order_items oi ON p.product_id = oi.product_id
 WHERE p.price IS NULL;
+
+--MENGGANTI NULL PADA KATEGORI MENJADI 'OTHERS'
+UPDATE products
+SET product_category_name_english = 'Others'
+WHERE product_category_name_english IS NULL
 ```
 
 ## Find Outliers
@@ -422,6 +427,7 @@ ORDER BY total_transaction DESC
 ```
 ### mencari jumlah produk yang diorder berdasarkan kategori barang
 ```SQL
+
 --mencari jumlah produk yang diorder berdasarkan kategori barang
 --berarti butuh tabel order_items dan products
 
@@ -432,5 +438,36 @@ FROM order_items o
 JOIN products p ON p.product_id = o.product_id
 GROUP BY p.product_category_name_english 
 ORDER BY product_count DESC
+```
+### analisis harga produk
+```sql
+--menghitung rata rata harga item
+SELECT 
+	AVG(price) as average_price
+FROM products
+
+
+--menghitung rata rata harga produk untuk tiap kategori
+SELECT 
+	AVG(price) as average_price,
+	product_category_name_english as product_category
+FROM products
+GROUP BY product_category_name_english
+```
+### analisis banyak orderan
+```sql
+--menghitung banyak orderan berdasarkan statusnya
+SELECT 
+	count(*) as order_count,
+	order_status
+FROM orders
+GROUP BY order_status
+
+--menghitung banyak orderan berdasarkan tahun
+SELECT 
+	count(*) as order_count,
+	YEAR(order_purchase_timestamp) AS years
+FROM orders
+GROUP BY YEAR(order_purchase_timestamp)
 ```
 
