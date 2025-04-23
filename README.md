@@ -5,8 +5,69 @@ Brazilian E-Commerce Analysis, leveraging SQL for data processing and Power BI f
 ## 📊 Data
 **Source**          : [https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)<br>
 **Period**          : January 2017 - Juli 2018<br>
-**Cleaned Dataset** : [Dataset](https://github.com/nurikarahmadani/Mobile-Data-SQL-Project/blob/main/Cleaned_Dataset.csv)
+**Cleaned Dataset** : [Dataset](https://balikpapancerdas-my.sharepoint.com/:u:/g/personal/nurikarahmadani_mka_balikpapancerdas_id/EdhcxRLqQJVKuw9fGXXcY5sBkeQs363tfNv9dhfzJ0Js4g?e=7GhS3Q)
 
+## 🎯 Objective
+* Analyzed product distribution and pricing trends in Brazilian e-commerce.
+* Identified patterns in payment methods and order statuses to optimize operational strategies.
+* Provided actionable insights on product performance and customer satisfaction through reviews and delivery data.
+
+## 🛠️ Methodology
+* SQL: Data processing and cleansing.
+* Power BI: Data visualization and creation of interactive dashboards.
+
+## ⭐ Demonstrated skills
+Data cleansing, data modeling, data visualization, and business analysis.
+
+## 📈 Findings and Insights
+### **Findings**
+1. **Product Distribution & Categories**:
+   - **Total Products**: **32,949 items** across **71 categories**.
+   - **Categories with the Highest Product Count**: Include **bed_bath_table**, **sports_leisure**, and **furniture_decor**.
+   - **Categories with the Highest Average Prices**: **Computers** and **musical_instruments**, while the lowest average prices are found in **books_general_interest** and **flowers**.
+2. **Order Status**:
+   - The majority of orders are marked as **delivered** (~97.02%), while smaller proportions fall into other statuses like **shipped**, **canceled**, and **invoiced**.
+3. **Payment Methods**:
+   - **Credit cards** dominate as the most frequently used payment method (75.24%), followed by **boleto** (23.41%) and other options like vouchers or debit cards.
+
+4. **Order Geography**:
+   - **São Paulo** is the region with the highest number of orders, followed by **Rio de Janeiro** and **Minas Gerais**.
+
+5. **Delivery Efficiency**:
+   - Late deliveries can be identified for further analysis to improve logistics processes.
+
+6. **Product Reviews**:
+   - Products with high and low ratings provide insights into customer satisfaction levels.
+
+---
+
+### **Insights**
+1. **Sales Trends & Categories**:
+   - Focusing on **computers** and **musical instruments** categories could yield higher margins due to their higher average prices.
+   - Categories like **books** and **flowers** can attract budget-conscious customers.
+
+2. **Payment Strategy**:
+   - As the majority of users prefer **credit cards**, optimizing the credit card payment experience could enhance order conversion rates.
+
+3. **Logistics Improvement**:
+   - High-order regions like São Paulo require more efficient delivery strategies to avoid delays.
+
+4. **Strengthening Product Reputation**:
+   - Analyzing product reviews can help improve low-rated categories and leverage highly-rated products for promotional campaigns.
+
+5. **Marketing Optimization**:
+   - Location-based marketing campaigns could target regions with lower order counts to increase market penetration.
+
+## 📊 Report
+[Click here to view the interactive report in Power BI](https://app.powerbi.com/reportEmbed?reportId=389a9c4a-d470-44db-9d2a-c4c7bcf41c9f&autoAuth=true&ctid=ba657883-8e76-43e4-8134-c0d580d5fdea)
+
+**Page 1**
+![Brazilian E-Commerce - Publish_page-0001](https://github.com/user-attachments/assets/f4fb9dcc-802e-4b52-87d3-aefb35891aaf)
+
+**Page 2**
+![Brazilian E-Commerce - Publish_page-0002](https://github.com/user-attachments/assets/143b4beb-5dd3-414d-ab69-d0a3d7746f35)
+
+## 📜 Steps And Details
 ## Database Preparation
 ```sql
 
