@@ -3,9 +3,9 @@
 Brazilian E-Commerce Analysis, leveraging SQL for data processing and Power BI for visualization. This project examines transaction trends, payment behaviors, and product category performance based on 99,441 orders from 3,095 sellers across 71 product categories in Brazil.
 
 ## 📊 Data
-**Source**          : [https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)<br>
-**Period**          : January 2017 - Juli 2018<br>
-**Cleaned Dataset** : [Dataset](https://balikpapancerdas-my.sharepoint.com/:u:/g/personal/nurikarahmadani_mka_balikpapancerdas_id/EdhcxRLqQJVKuw9fGXXcY5sBkeQs363tfNv9dhfzJ0Js4g?e=7GhS3Q)
+* **Source**          : [https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)<br>
+* **Period**          : January 2017 - Juli 2018<br>
+* **Cleaned Dataset** : [Dataset](https://balikpapancerdas-my.sharepoint.com/:u:/g/personal/nurikarahmadani_mka_balikpapancerdas_id/EdhcxRLqQJVKuw9fGXXcY5sBkeQs363tfNv9dhfzJ0Js4g?e=7GhS3Q)
 
 ## 🎯 Objective
 * Analyzed product distribution and pricing trends in Brazilian e-commerce.
