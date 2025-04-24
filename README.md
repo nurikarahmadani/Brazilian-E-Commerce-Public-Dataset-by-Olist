@@ -1,4 +1,4 @@
-# E-Commerce Report and Analysis in Brazil: Sales Trends, Product Categories, and Consumer Behavior
+
 ## 📌 Project Overview
 Brazilian E-Commerce Analysis, leveraging SQL for data processing and Power BI for visualization. This project examines transaction trends, payment behaviors, and product category performance based on 99,441 orders from 3,095 sellers across 71 product categories in Brazil.
 
