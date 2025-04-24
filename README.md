@@ -7,17 +7,21 @@ Brazilian E-Commerce Analysis, leveraging SQL for data processing and Power BI f
 * **Period**          : January 2017 - Juli 2018<br>
 * **Cleaned Dataset** : [Dataset](https://balikpapancerdas-my.sharepoint.com/:u:/g/personal/nurikarahmadani_mka_balikpapancerdas_id/EdhcxRLqQJVKuw9fGXXcY5sBkeQs363tfNv9dhfzJ0Js4g?e=7GhS3Q)
 
+
 ## 🎯 Objective
 * Analyzed product distribution and pricing trends in Brazilian e-commerce.
 * Identified patterns in payment methods and order statuses to optimize operational strategies.
 * Provided actionable insights on product performance and customer satisfaction through reviews and delivery data.
 
+
 ## 🛠️ Methodology
 * SQL: Data processing and cleansing.
 * Power BI: Data visualization and creation of interactive dashboards.
 
+
 ## ⭐ Demonstrated skills
 Data cleansing, data modeling, data visualization, and business analysis.
+
 
 ## 📈 Findings
 **Product Distribution & Categories**:
@@ -40,6 +44,7 @@ Data cleansing, data modeling, data visualization, and business analysis.
 **Product Reviews**:
    - Products with high and low ratings provide insights into customer satisfaction levels.
 
+
 ## 📈 Insights
 **Sales Trends & Categories**:
    - Focusing on computers and musical instruments categories could yield higher margins due to their higher average prices.
@@ -57,6 +62,7 @@ Data cleansing, data modeling, data visualization, and business analysis.
 **Marketing Optimization**:
    - Location-based marketing campaigns could target regions with lower order counts to increase market penetration.
 
+
 ## 📊 Report
 [Click here to view the interactive report in Power BI](https://app.powerbi.com/reportEmbed?reportId=389a9c4a-d470-44db-9d2a-c4c7bcf41c9f&autoAuth=true&ctid=ba657883-8e76-43e4-8134-c0d580d5fdea)
 
@@ -65,6 +71,7 @@ Data cleansing, data modeling, data visualization, and business analysis.
 
 **Page 2**
 ![Brazilian E-Commerce - Publish_page-0002](https://github.com/user-attachments/assets/143b4beb-5dd3-414d-ab69-d0a3d7746f35)
+
 
 ## 📜 Steps And Details
 ## Database Preparation
