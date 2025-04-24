@@ -19,43 +19,34 @@ Brazilian E-Commerce Analysis, leveraging SQL for data processing and Power BI f
 ## ⭐ Demonstrated skills
 Data cleansing, data modeling, data visualization, and business analysis.
 
-## 📈 Findings and Insights
-### **Findings**
-1. **Product Distribution & Categories**:
-   - **Total Products**: **32,949 items** across **71 categories**.
-   - **Categories with the Highest Product Count**: Include **bed_bath_table**, **sports_leisure**, and **furniture_decor**.
-   - **Categories with the Highest Average Prices**: **Computers** and **musical_instruments**, while the lowest average prices are found in **books_general_interest** and **flowers**.
-2. **Order Status**:
-   - The majority of orders are marked as **delivered** (~97.02%), while smaller proportions fall into other statuses like **shipped**, **canceled**, and **invoiced**.
-3. **Payment Methods**:
-   - **Credit cards** dominate as the most frequently used payment method (75.24%), followed by **boleto** (23.41%) and other options like vouchers or debit cards.
+## 📈 Findings
+**Product Distribution & Categories**:
+   - **Total Products**: 32,949 items** across 71 categories.
+   - **Categories with the Highest Product Count**: Include bed_bath_table, sports_leisure, and furniture_decor.
+   - **Categories with the Highest Average Prices**: Computers and musical_instruments, while the lowest average prices are found in books_general_interest and flowers.
+**Order Status**:
+   - The majority of orders are marked as delivered (~97.02%), while smaller proportions fall into other statuses like shipped, canceled, and invoiced.
+**Payment Methods**:
+   - **Credit cards** dominate as the most frequently used payment method (75.24%), followed by boleto (23.41%) and other options like vouchers or debit cards.
 
-4. **Order Geography**:
-   - **São Paulo** is the region with the highest number of orders, followed by **Rio de Janeiro** and **Minas Gerais**.
-
-5. **Delivery Efficiency**:
+**Order Geography**:
+   - **São Paulo** is the region with the highest number of orders, followed by Rio de Janeiro and Minas Gerais.
+**Delivery Efficiency**:
    - Late deliveries can be identified for further analysis to improve logistics processes.
-
-6. **Product Reviews**:
+**Product Reviews**:
    - Products with high and low ratings provide insights into customer satisfaction levels.
 
----
-
-### **Insights**
-1. **Sales Trends & Categories**:
-   - Focusing on **computers** and **musical instruments** categories could yield higher margins due to their higher average prices.
-   - Categories like **books** and **flowers** can attract budget-conscious customers.
-
-2. **Payment Strategy**:
-   - As the majority of users prefer **credit cards**, optimizing the credit card payment experience could enhance order conversion rates.
-
-3. **Logistics Improvement**:
+## 📈 Insights
+**Sales Trends & Categories**:
+   - Focusing on computers and musical instruments categories could yield higher margins due to their higher average prices.
+   - Categories like books and flowers can attract budget-conscious customers.
+**Payment Strategy**:
+   - As the majority of users prefer credit cards, optimizing the credit card payment experience could enhance order conversion rates.
+**Logistics Improvement**:
    - High-order regions like São Paulo require more efficient delivery strategies to avoid delays.
-
-4. **Strengthening Product Reputation**:
+**Strengthening Product Reputation**:
    - Analyzing product reviews can help improve low-rated categories and leverage highly-rated products for promotional campaigns.
-
-5. **Marketing Optimization**:
+**Marketing Optimization**:
    - Location-based marketing campaigns could target regions with lower order counts to increase market penetration.
 
 ## 📊 Report
@@ -69,179 +60,179 @@ Data cleansing, data modeling, data visualization, and business analysis.
 
 ## 📜 Steps And Details
 ## Database Preparation
-```sql
-
---TABEL CUSTOMERS
-CREATE DATABASE brazilian_ecommerce
-CREATE TABLE customers(
-  customer_id VARCHAR(100) PRIMARY KEY,
-  customer_unique_id VARCHAR (100),
-  customer_zip_code_prefix VARCHAR(100),
-  customer_city VARCHAR(100),
-  customer_state VARCHAR(100)
-)
-BULK INSERT customers
-FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\customers.csv'
-WITH(
-	FORMAT = 'CSV',
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\n',
-	CODEPAGE = '1252'
-)
-
---TABEL GEOLOCATIONS
-CREATE TABLE geolocations(
-	geolocation_zip_code VARCHAR (100),
-	latitude VARCHAR(100),
-	longitude VARCHAR(100),
-	city VARCHAR(100),
-	state VARCHAR(100)
-)
-BULK INSERT geolocations
-FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\geolocations.csv'
-WITH(
-	FORMAT = 'CSV',
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\n',
-	CODEPAGE = '1252'
-)
-
---TABEL ORDER_ITEMS
-CREATE TABLE order_items(
-	order_id VARCHAR (100),
-	order_item_id VARCHAR(100),
-	product_id VARCHAR(100),
-	seller_id VARCHAR(100),
-	shipping_limit_date DATETIME,
-	price DECIMAL,
-	freight_value VARCHAR(100),
-)
-BULK INSERT order_items
-FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\order_items.csv'
-WITH(
-	FORMAT = 'CSV',
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\n',
-	CODEPAGE = '1252'
-)
-
---TABEL ORDER_PAYMENTS
-CREATE TABLE order_payments(
-	order_id VARCHAR (100),
-	payment_sequential VARCHAR(100),
-	payment_type VARCHAR(100),
-	payment_installments VARCHAR(100),
-	payment_value DECIMAL
-)
-BULK INSERT order_payments
-FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\order_payments.csv'
-WITH(
-	FORMAT = 'CSV',
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\n',
-	CODEPAGE = '1252'
-)
---TABLE ORDER_REVIEWS
-CREATE TABLE order_reviews(
-	review_id VARCHAR (100),
-	order_id VARCHAR(100),
-	review_score INT,
-	review_comment_title VARCHAR(100),
-	review_comment_message VARCHAR(100),
-	review_creation_date DATETIME,
-	review_answer_timestamp DATETIME
-)
-BULK INSERT order_reviews
-FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\order_reviews.csv'
-WITH(
-	FORMAT = 'CSV',
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\n',
-	CODEPAGE = '1252'
-)
-
---TABEL PRODUCT_CATEGORY
-CREATE TABLE products_category(
-  product_category_name VARCHAR(100),
-  product_category_name_english VARCHAR (100),
-
-)
-BULK INSERT products_category
-FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\product_category.csv'
-WITH(
-	FORMAT = 'CSV',
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\n',
-	CODEPAGE = '1252'
-)
-
--TABEL PRODUCTS
-
-CREATE TABLE products(
-  product_id VARCHAR(100) PRIMARY KEY,
-  product_category_name VARCHAR (100),
-  product_name_lenght DECIMAL,
-  product_description_lenght DECIMAL,
-  product_photos_qty DECIMAL,
-  product_weight_g DECIMAL,
-  product_length_cm DECIMAL,
-  product_height_cm DECIMAL,
-  product_width_cm DECIMAL
-)
-BULK INSERT products
-FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\products.csv'
-WITH(
-	FORMAT = 'CSV',
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\n',
-	CODEPAGE = '1252'
-)
-
---TABLE SELLERS
-
-CREATE TABLE sellers(
-  seller_id VARCHAR(100) PRIMARY KEY,
-  seller_zip_code_prefix VARCHAR (100),
-  seller_city VARCHAR(100),
-  seller_state VARCHAR(100)
-)
-BULK INSERT sellers
-FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\sellers.csv'
-WITH(
-	FORMAT = 'CSV',
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\n',
-	CODEPAGE = '1252'
-)
---TABEL ORDERS
-CREATE TABLE orders(
-	order_id VARCHAR(100),
-	customer_id VARCHAR(100),
-	order_status VARCHAR(100),
-	order_purchase_timestamp VARCHAR(100),
-	order_approved_at VARCHAR(100),
-	order_delivered_carrier_date DATETIME,
-	order_delivered_customer_date DATETIME,
-	order_estimated_delivery_date DATETIME
-)
-BULK INSERT orders
-FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\orders.csv'
-WITH(
-	FORMAT = 'CSV',
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	ROWTERMINATOR = '\n',
-	CODEPAGE = '1252'
-)
-```
+>```sql
+>
+>--TABEL CUSTOMERS
+>CREATE DATABASE brazilian_ecommerce
+>CREATE TABLE customers(
+>  customer_id VARCHAR(100) PRIMARY KEY,
+>  customer_unique_id VARCHAR (100),
+>  customer_zip_code_prefix VARCHAR(100),
+>  customer_city VARCHAR(100),
+>  customer_state VARCHAR(100)
+>)
+>BULK INSERT customers
+>FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\customers.csv'
+>WITH(
+>	FORMAT = 'CSV',
+>	FIRSTROW = 2,
+>	FIELDTERMINATOR = ',',
+>	ROWTERMINATOR = '\n',
+>	CODEPAGE = '1252'
+>)
+>
+>--TABEL GEOLOCATIONS
+>CREATE TABLE geolocations(
+>	geolocation_zip_code VARCHAR (100),
+>	latitude VARCHAR(100),
+>	longitude VARCHAR(100),
+>	city VARCHAR(100),
+>	state VARCHAR(100)
+>)
+>BULK INSERT geolocations
+>FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\geolocations.csv'
+>WITH(
+>	FORMAT = 'CSV',
+>	FIRSTROW = 2,
+>	FIELDTERMINATOR = ',',
+>	ROWTERMINATOR = '\n',
+>	CODEPAGE = '1252'
+>)
+>
+>--TABEL ORDER_ITEMS
+>CREATE TABLE order_items(
+>	order_id VARCHAR (100),
+>	order_item_id VARCHAR(100),
+>	product_id VARCHAR(100),
+>	seller_id VARCHAR(100),
+>	shipping_limit_date DATETIME,
+>	price DECIMAL,
+>	freight_value VARCHAR(100),
+>)
+>BULK INSERT order_items
+>FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\order_items.csv'
+>WITH(
+>	FORMAT = 'CSV',
+>	FIRSTROW = 2,
+>	FIELDTERMINATOR = ',',
+>	ROWTERMINATOR = '\n',
+>	CODEPAGE = '1252'
+>)
+>
+>--TABEL ORDER_PAYMENTS
+>CREATE TABLE order_payments(
+>	order_id VARCHAR (100),
+>	payment_sequential VARCHAR(100),
+>	payment_type VARCHAR(100),
+>	payment_installments VARCHAR(100),
+>	payment_value DECIMAL
+>)
+>BULK INSERT order_payments
+>FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\order_payments.csv'
+>WITH(
+>	FORMAT = 'CSV',
+>	FIRSTROW = 2,
+>	FIELDTERMINATOR = ',',
+>	ROWTERMINATOR = '\n',
+>	CODEPAGE = '1252'
+>)
+>--TABLE ORDER_REVIEWS
+>CREATE TABLE order_reviews(
+>	review_id VARCHAR (100),
+>	order_id VARCHAR(100),
+>	review_score INT,
+>	review_comment_title VARCHAR(100),
+>	review_comment_message VARCHAR(100),
+>	review_creation_date DATETIME,
+>	review_answer_timestamp DATETIME
+>)
+>BULK INSERT order_reviews
+>FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\order_reviews.csv'
+>WITH(
+>	FORMAT = 'CSV',
+>	FIRSTROW = 2,
+>	FIELDTERMINATOR = ',',
+>	ROWTERMINATOR = '\n',
+>	CODEPAGE = '1252'
+>)
+>
+>--TABEL PRODUCT_CATEGORY
+>CREATE TABLE products_category(
+>  product_category_name VARCHAR(100),
+>  product_category_name_english VARCHAR (100),
+>
+>)
+>BULK INSERT products_category
+>FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\product_category.csv'
+>WITH(
+>	FORMAT = 'CSV',
+>	FIRSTROW = 2,
+>	FIELDTERMINATOR = ',',
+>	ROWTERMINATOR = '\n',
+>	CODEPAGE = '1252'
+>)
+>
+>-TABEL PRODUCTS
+>
+>CREATE TABLE products(
+>  product_id VARCHAR(100) PRIMARY KEY,
+>  product_category_name VARCHAR (100),
+>  product_name_lenght DECIMAL,
+>  product_description_lenght DECIMAL,
+>  product_photos_qty DECIMAL,
+>  product_weight_g DECIMAL,
+>  product_length_cm DECIMAL,
+>  product_height_cm DECIMAL,
+>  product_width_cm DECIMAL
+>)
+>BULK INSERT products
+>FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\products.csv'
+>WITH(
+>	FORMAT = 'CSV',
+>	FIRSTROW = 2,
+>	FIELDTERMINATOR = ',',
+>	ROWTERMINATOR = '\n',
+>	CODEPAGE = '1252'
+>)
+>
+>--TABLE SELLERS
+>
+>CREATE TABLE sellers(
+>  seller_id VARCHAR(100) PRIMARY KEY,
+>  seller_zip_code_prefix VARCHAR (100),
+>  seller_city VARCHAR(100),
+>  seller_state VARCHAR(100)
+>)
+>BULK INSERT sellers
+>FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\sellers.csv'
+>WITH(
+>	FORMAT = 'CSV',
+>	FIRSTROW = 2,
+>	FIELDTERMINATOR = ',',
+>	ROWTERMINATOR = '\n',
+>	CODEPAGE = '1252'
+>)
+>--TABEL ORDERS
+>CREATE TABLE orders(
+>	order_id VARCHAR(100),
+>	customer_id VARCHAR(100),
+>	order_status VARCHAR(100),
+>	order_purchase_timestamp VARCHAR(100),
+>	order_approved_at VARCHAR(100),
+>	order_delivered_carrier_date DATETIME,
+>	order_delivered_customer_date DATETIME,
+>	order_estimated_delivery_date DATETIME
+>)
+>BULK INSERT orders
+>FROM 'C:\Users\NURIKA RAHMADANI\OneDrive - Balikpapan Cerdas\Data Analyst\Project\Brazilian E-Commerce Public Dataset by Olist\orders.csv'
+>WITH(
+>	FORMAT = 'CSV',
+>	FIRSTROW = 2,
+>	FIELDTERMINATOR = ',',
+>	ROWTERMINATOR = '\n',
+>	CODEPAGE = '1252'
+>)
+>```
 ## Data Cleaning and Normalization
 ```sql
 -- Mengecek null values
