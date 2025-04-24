@@ -23,15 +23,20 @@ Data cleansing, data modeling, data visualization, and business analysis.
 **Product Distribution & Categories**:
    - **Total Products**: 32,949 items** across 71 categories.
    - **Categories with the Highest Product Count**: Include bed_bath_table, sports_leisure, and furniture_decor.
-   - **Categories with the Highest Average Prices**: Computers and musical_instruments, while the lowest average prices are found in books_general_interest and flowers.<br>
+   - **Categories with the Highest Average Prices**: Computers and musical_instruments, while the lowest average prices are found in books_general_interest and flowers.
+     
 **Order Status**:
-   - The majority of orders are marked as delivered (~97.02%), while smaller proportions fall into other statuses like shipped, canceled, and invoiced.<br>
+   - The majority of orders are marked as delivered (~97.02%), while smaller proportions fall into other statuses like shipped, canceled, and invoiced.
+     
 **Payment Methods**:
    - **Credit cards** dominate as the most frequently used payment method (75.24%), followed by boleto (23.41%) and other options like vouchers or debit cards.
+     
 **Order Geography**:
    - São Paulo is the region with the highest number of orders, followed by Rio de Janeiro and Minas Gerais.
+     
 **Delivery Efficiency**:
    - Late deliveries can be identified for further analysis to improve logistics processes.
+     
 **Product Reviews**:
    - Products with high and low ratings provide insights into customer satisfaction levels.
 
@@ -39,12 +44,16 @@ Data cleansing, data modeling, data visualization, and business analysis.
 **Sales Trends & Categories**:
    - Focusing on computers and musical instruments categories could yield higher margins due to their higher average prices.
    - Categories like books and flowers can attract budget-conscious customers.
+     
 **Payment Strategy**:
    - As the majority of users prefer credit cards, optimizing the credit card payment experience could enhance order conversion rates.
+     
 **Logistics Improvement**:
    - High-order regions like São Paulo require more efficient delivery strategies to avoid delays.
+     
 **Strengthening Product Reputation**:
    - Analyzing product reviews can help improve low-rated categories and leverage highly-rated products for promotional campaigns.
+     
 **Marketing Optimization**:
    - Location-based marketing campaigns could target regions with lower order counts to increase market penetration.
 
